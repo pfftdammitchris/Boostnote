@@ -73,6 +73,9 @@ function addStorage (input) {
           if (unknownCount > 0) {
             CSON.writeFileSync(path.join(storage.path, 'boostnote.json'), _.pick(storage, ['folders', 'version']))
           }
+          if (!notes.length) {
+            CSON.writeFileSync(path.join(storage.path, 'boostnote.json'), { folders: storage.folders, version: storage.version })
+          }
           return notes
         })
     })
